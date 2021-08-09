@@ -10,6 +10,8 @@
     "lint": "eslint ."
   },
   "dependencies": {
+    "axios": "^0.21.1",
+    "mongoose": "^5.13.5",
     "react": "17.0.1",
     "react-native": "0.64.2"
   },
