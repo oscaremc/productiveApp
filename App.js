@@ -1,12 +1,22 @@
 import React from 'react';
-import { Text, View } from 'react-native';
+import axios from 'axios';
+import { View, Text } from 'react-native';
 
-const App = () => {
-  return (
-    <View style={{ flex: 1, justifyContent:"center", alignItems:"center"}}>
-      <Text>BACKEND!</Text>
-    </View>
-  );
+export default class App extends React.Component {
+  state = {
+    objetive: []
+  }
+
+  componentDidMount() {
+    axios.get(`http://192.168.0.21:3000/`)
+      .then(res => {console.log(res.data) })
+  }
+
+  render() {
+    return (
+      <View>
+        <Text>Objetivos Crear</Text>
+      </View>
+    )
+  }
 }
-
-export default App;
