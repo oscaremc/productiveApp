@@ -1,10 +1,14 @@
 import React from 'react'
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native'
+import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import { useNavigation } from "@react-navigation/native";
 
 const ItemObjetive = ({item, handleDelete}) => {
+    
+    const navigation = useNavigation()
+    
     return (
         <View style={styles.itemContainer}>
-            <TouchableOpacity>
+            <TouchableOpacity onPress={() => navigation.navigate('CrearObjetive', { id: item._id })}>
                 <Text style={styles.itemTitle}>{item.nombre_objetivo}</Text>
                 <Text style={styles.itemTitle}>ciclos: {item.cantidad_ciclos}</Text>
             </TouchableOpacity>

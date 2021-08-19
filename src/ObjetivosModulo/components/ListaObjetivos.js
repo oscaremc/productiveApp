@@ -1,13 +1,16 @@
 import React, {useState, useEffect} from 'react';
 import { FlatList, RefreshControl } from 'react-native';
+import { useIsFocused } from "@react-navigation/native";
 
 import ItemObjetive from "../components/ItemObjetive";
-import { getObjetive, deleteObjetive } from '../api'
+import { getObjetive, deleteObjetive } from '../service/api'
 
 const ListaObjetivos = () => {
 
     const [Objetive, setObjetive] = useState([]);
     const [refresing, setrefresing] = useState(false)
+
+    const isFocused = useIsFocused()
 
     const cargaObjetivos = async () => {
         const data = await getObjetive();
@@ -16,7 +19,7 @@ const ListaObjetivos = () => {
 
     useEffect(() => {
         cargaObjetivos()
-    }, []);
+    }, [isFocused]);
 
     const handleDelete = async (_id) => {
         await deleteObjetive(_id)
